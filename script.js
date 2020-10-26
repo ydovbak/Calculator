@@ -37,7 +37,7 @@ window.onload = function () {
     $("eraseBtn").onclick = eraseInput;
     $("deleteBtn").onclick = deleteLastIput;
 
-    //$("percentBtn").onclick = getCaret;
+    $("equalstBtn").onclick = evaluate;
 
 
 };
@@ -46,8 +46,22 @@ function evaluate() {
     //Get the expression from the input field
     var inputField = $("userInput").value;
 
-    //Write the result to the output field
-    $("resultOutput").innerText = eval(inputField);
+    try {
+        if (inputField.length > 0) {
+            console.log("length more then 0")
+            //Write the result to the output field
+            $("resultOutput").innerText = eval(inputField);
+        }
+    } catch(err) {
+        //In case of invalid input, showing a messages in the output field
+        console.log("ERROR: " + err);
+        $("resultOutput").innerHTML = "<span class='warning'>Invalid Iput</span>";
+        setTimeout(function(){
+            $("resultOutput").innerHTML="Result here";
+            },1500);
+    }
+    
+
 
     //After button input, put focus on input line
     $("userInput").focus();
@@ -97,6 +111,8 @@ function putSymbbolOnPosition(symbol, position) {
 //Clear the input
 function eraseInput() {
     $("userInput").value = "";
+    $("resultOutput").innerText = "Result here";
+    $("userInput").focus();
 };
 
 
@@ -128,6 +144,10 @@ function deleteLastIput() {
         }
 
     }
+
+    //Deleting the previous result
+    $("resultOutput").innerText = "Result here";
+    
 
 };
 
