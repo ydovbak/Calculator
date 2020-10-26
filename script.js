@@ -1,5 +1,8 @@
 "use strict";
 
+var emptyResult = "Result here";
+var invalidResult = "<span class='warning'>Invalid Input</span>";
+
 function $(id) {
     return document.getElementById(id);
 }
@@ -52,19 +55,31 @@ function evaluate() {
             //Write the result to the output field
             $("resultOutput").innerText = eval(inputField);
         }
-    } catch(err) {
+    } catch (err) {
         //In case of invalid input, showing a messages in the output field
         console.log("ERROR: " + err);
-        $("resultOutput").innerHTML = "<span class='warning'>Invalid Iput</span>";
-        setTimeout(function(){
-            $("resultOutput").innerHTML="Result here";
-            },1500);
+        $("resultOutput").innerHTML = invalidResult;
     }
-    
-
 
     //After button input, put focus on input line
     $("userInput").focus();
+}
+
+//This function is checking if input from keyboard is valid
+//If it is not a number, +-/* or comma, methond returns false, else returns true
+//The method is checking character codes corresponding to valid value
+function isValidKey(event) {
+    var charCode = event.which;
+    if ((charCode >= 40 && charCode <= 57) || charCode == 44){
+        console.log('Keyconde inside')
+    } else if(charCode == 61) {
+        //If user presses = on keybord, it is not shown on input, but result of evaluation is shown in the output
+        event.preventDefault();
+        evaluate();
+    } else {
+        event.preventDefault();
+        console.log('Keycode outside of range')
+    }
 }
 
 
@@ -111,7 +126,7 @@ function putSymbbolOnPosition(symbol, position) {
 //Clear the input
 function eraseInput() {
     $("userInput").value = "";
-    $("resultOutput").innerText = "Result here";
+    $("resultOutput").innerText = emptyResult;
     $("userInput").focus();
 };
 
@@ -146,8 +161,8 @@ function deleteLastIput() {
     }
 
     //Deleting the previous result
-    $("resultOutput").innerText = "Result here";
-    
+    $("resultOutput").innerText = emptyResult;
+
 
 };
 
