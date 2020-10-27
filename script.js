@@ -69,16 +69,27 @@ function evaluate() {
 //If it is not a number, +-/* or comma, methond returns false, else returns true
 //The method is checking character codes corresponding to valid value
 function isValidKey(event) {
+
     var charCode = event.which;
-    if ((charCode >= 40 && charCode <= 57) || charCode == 44){
-        console.log('Keyconde inside')
-    } else if(charCode == 61) {
+    console.log("Char code " + charCode);
+    if ((charCode >= 40 && charCode <= 57) || charCode == 44) {
+        console.log('Keyconde inside');
+    } else if (charCode == 61) {
         //If user presses = on keybord, it is not shown on input, but result of evaluation is shown in the output
         event.preventDefault();
         evaluate();
     } else {
         event.preventDefault();
         console.log('Keycode outside of range')
+    }
+}
+
+// This method is checking if Backspace was pressed
+// if it was, the Result field is reset
+function isDelete(event) {
+    var key = event.key;
+    if (key === "Backspace") {
+        $("resultOutput").innerText = emptyResult;
     }
 }
 
