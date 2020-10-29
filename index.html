@@ -4,7 +4,6 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
   <title>Calculator</title>
 
   <!--Importing Bootstrap into the project-->
@@ -16,29 +15,26 @@
   <script src="script.js"></script>
 
   <!--Font awesome icons-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+    crossorigin="anonymous" />
 </head>
 
 <body class="text-center">
   <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-    <header class="masthead mb-auto">
-      <div class="inner">
-        <h3 class="masthead-brand">Calculator</h3>
-        <nav class="nav nav-masthead justify-content-center">
-          <a class="nav-link active" href="#">Home</a>
-          <a class="nav-link" href="#">Report</a>
-        </nav>
-      </div>
+
+    <header class="m-auto">
+      <h3>Calculator</h3>
     </header>
 
-    <main role="main" class="inner">
+    <main>
       <div class="container w-75">
         <!--Input Row -->
         <div class="row">
           <div class="col input-grid">
-            <div class="input-group">
-              <input class="num-input" placeholder="Enter" type="text" id="userInput"  onkeypress="isValidKey(event);" onkeydown="isDelete(event);" >
-            </div>
+              <input class="num-input" placeholder="Enter" type="text" id="userInput" 
+                onkeypress="isValidKey(event);"
+                onkeydown="isDelete(event);">
           </div>
         </div>
 
@@ -65,7 +61,7 @@
           </div>
         </div>
 
-        
+
 
         <div class="row">
           <div class="col buttons-numbers" id="sevenBtn">
@@ -80,7 +76,7 @@
           <div class="col buttons-signs" id="divideBtn">
             <h3 class="mb-0"><span>&#247;</span></h3>
           </div>
-         
+
         </div>
 
 
@@ -136,7 +132,7 @@
 
     <footer class="mastfoot mt-auto">
       <div class="inner">
-        <p> Calculator project for 2nd year WebDev </p>
+        <span>Yuliia Dovbak</span>
       </div>
     </footer>
   </div>
