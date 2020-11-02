@@ -1,7 +1,5 @@
 "use strict";
 
-var invalidResult = "<span class='warning'>Invalid Input</span>";
-
 function $(id) {
     return document.getElementById(id);
 }
@@ -57,7 +55,7 @@ function evaluate() {
     } catch (err) {
         //In case of invalid input, showing a messages in the output field
         console.log("ERROR: " + err);
-        $("resultOutput").innerHTML = invalidResult;
+        $("resultOutput").innerHTML = "<span class='warning'>Invalid Input</span>";
     }
 
     //After button input, put focus on input line
@@ -89,7 +87,7 @@ function isValidKey(event) {
 function isDelete(event) {
     var key = event.key;
     if (key === "Backspace") {
-        $("resultOutput").innerText = emptyResult;
+        resetResult();
     }
 }
 
@@ -206,6 +204,7 @@ function setCaretPosition(caretPos) {
     }
 };
 
+//Function resets the text inside output field
 function resetResult() {
     $("resultOutput").innerText = "Result here";
 };
