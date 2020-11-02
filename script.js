@@ -1,6 +1,5 @@
 "use strict";
 
-var emptyResult = "Result here";
 var invalidResult = "<span class='warning'>Invalid Input</span>";
 
 function $(id) {
@@ -74,6 +73,7 @@ function isValidKey(event) {
     console.log("Char code " + charCode);
     if ((charCode >= 40 && charCode <= 57) || charCode == 44) {
         console.log('Keyconde inside');
+        resetResult();
     } else if (charCode == 61) {
         //If user presses = on keybord, it is not shown on input, but result of evaluation is shown in the output
         event.preventDefault();
@@ -104,6 +104,7 @@ function simpleBtnClicked() {
 
     //Writing the number into the input field
     putSymbbolOnPosition(number, getCaretPosition());
+    resetResult();
 };
 
 //Function that handles Multiply button click
@@ -113,6 +114,7 @@ function multiplyBtnClicked() {
 
     //Writing multiply sign into the input field
     putSymbbolOnPosition("*", getCaretPosition());
+    resetResult();
 };
 
 //Function that handles Multiply button click
@@ -122,6 +124,7 @@ function divideBtnClicked() {
 
     //Writing divide sign into the input field
     putSymbbolOnPosition("/", getCaretPosition());
+    resetResult();
 };
 
 //This method is writing the synbol into the required position in input field
@@ -137,7 +140,7 @@ function putSymbbolOnPosition(symbol, position) {
 //Clear the input
 function eraseInput() {
     $("userInput").value = "";
-    $("resultOutput").innerText = emptyResult;
+    resetResult();
     $("userInput").focus();
 };
 
@@ -168,13 +171,9 @@ function deleteLastIput() {
             //Leaving caret in the same position
             setCaretPosition(caretPosition - 1);
         }
-
+        //Deleting the previous result
+        resetResult();
     }
-
-    //Deleting the previous result
-    $("resultOutput").innerText = emptyResult;
-
-
 };
 
 //This method returns the position of the cursor at the moment
@@ -182,7 +181,7 @@ function getCaretPosition() {
     var myElement = $('userInput');
     var startPosition = myElement.selectionStart;
     return startPosition;
-}
+};
 
 
 //This method is setting the cursor to required position in the input 
@@ -205,4 +204,8 @@ function setCaretPosition(caretPos) {
                 element.focus();
         }
     }
-}
+};
+
+function resetResult() {
+    $("resultOutput").innerText = "Result here";
+};
